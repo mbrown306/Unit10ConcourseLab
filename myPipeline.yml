@@ -1,0 +1,9 @@
+---
+jobs:
+  - name: ConcourseLab
+    public: true
+    plan:
+      - task: make-a-file
+        #TODO: Fill in first task to run program.sh
+      - task: consume-the-file
+        #TODO: Fill in first task to run testProgram.sh and indicate success or failure with a message
