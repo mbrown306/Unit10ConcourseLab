@@ -1,9 +1,30 @@
 ---
+resources:
+  - name: resource-git
+    type: git
+    icon: github
+    source:
+      uri: https://github.com/mbrown306/Unit10ConcourseLab 
+    branch: master
+    username: mbrown306
+    password: Tiffany12b
+
+
+---
 jobs:
-  - name: ConcourseLab
+   - name: pull-and-run-script 
     public: true
     plan:
-      - task: make-a-file
-        #TODO: Fill in first task to run program.sh
-      - task: consume-the-file
-        #TODO: Fill in first task to run testProgram.sh and indicate success or failure with a message
+      - get: resource-git 
+      - task: run-script  
+        config:
+          image_resource:
+          source: { repository: nginx }
+          type: registry-image
+       inputs:
+         - name: resource-git
+      platform: linux
+      run:
+       path:   Unit10ConcourseLab/program.sh
+      outputs:
+        -  name: myfile
