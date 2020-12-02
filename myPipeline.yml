@@ -7,7 +7,7 @@ resources:
   icon: github
   source:
     uri: https://github.com/mbrown306/Unit10ConcourseLab
-    branch: master
+    branch: project10
     username: mbrown306
     password: Tiffany12b
 
@@ -22,7 +22,7 @@ jobs:
       platform: linux
       image_resource:
         type: registry-image
-        source: { repository: busybox }
+        source: { repository: ngnix }
       inputs:
         - name: concourse-pipeline
       run:
