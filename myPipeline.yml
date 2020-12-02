@@ -1,29 +1,26 @@
-resource_types:
-- name: concourse-pipeline
-  type: docker-image
-  source:
-    repository:  concourse/concourse-pipeline-resource
-
+---
 resources:
-- name: github-resource
+- name: concourse-pipeline
   type: git
+  icon: github
   source:
     uri: https://github.com/mbrown306/Unit10ConcourseLab
     branch: master
-    username: mbrown306
-    password: Tiffany12b
+    username:
+    password:
+
+---
 
 jobs:
-- name: pull-and-run-script
+- name: job 
   plan:
-  - get: github-resource
+  - get: concourse-pipeline
   - task: run-script
     config:
       platform: linux
       image_resource:
         type: registry-image
-        source: {repository: nginx}
-      inputs:
-      - name: github-resource
+        source: { repository: busybox }
       run:
-        path: Unit10ConcourseLab/program.sh
+        path: echo 
+        args: ["helo world"]
