@@ -11,4 +11,5 @@ then
 fi
      n=$(($n+1)) 
 done
+ ls -lar ./myfile/even-number.txt
 exit 0

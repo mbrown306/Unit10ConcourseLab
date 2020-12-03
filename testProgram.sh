@@ -5,9 +5,7 @@
 
 #Check that the result matches the correct result
 sum=0
-file='even-number.txt'
-
- pwd >>test
+file='./myfile/even-number.txt'
 echo  $PWD
 for num in $(cat $file)
 do
@@ -20,5 +18,5 @@ if [ $sum = 250500 ]
 then
    exit 0
 else 
-   exit 0
+   exit 1
 fi
