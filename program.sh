@@ -2,13 +2,12 @@
 
 #program.sh
 #Fill in the program described in the lab assignment below
-
 n=1
-touch even-number.txt
-while [ $n -lt 30 ]; do 
+while [ $n -lt 1001 ]; do
 if [ $(( $n % 2 )) -eq 0  ]
 then
-   echo  " $n"  >> even-number
+   echo  " $n"  >> ./myfile/even-number.txt
+   echo $n
 fi
      n=$(($n+1)) 
 done
