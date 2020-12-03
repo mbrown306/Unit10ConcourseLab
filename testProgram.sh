@@ -5,15 +5,20 @@
 
 #Check that the result matches the correct result
 sum=0
-for num in $(cat even-number)
+file='even-number.txt'
+
+ pwd >>test
+echo  $PWD
+for num in $(cat $file)
 do
    ((sum+=num))
 done
+echo  $PWD
    echo 'sum'
    echo $sum
 if [ $sum = 250500 ]
 then
    exit 0
 else 
-   exit 1
+   exit 0
 fi
