@@ -1,25 +1,28 @@
 ---
+
 resources:
+
 - name: concourse-pipeline
   type: git
-  icon: github
   source:
     uri: https://github.com/mbrown306/Unit10ConcourseLab
-    branch: master
+    branch: project10
     username: mbrown306
     password: Tiffany12b
+
 ---
+
 jobs:
   - name: create-even-numbers-job
-    public: true
     plan:
-      - git concourse-pipeline
+      - get: concourse-pipeline
       - task: simple-task
         config:
           platform: linux
           image_resource:
+            source: { repository: nginx }
             type: registry-image
-            source: { repository: busybox }
           run:
-            path: echo 
-            args: ["Hello , World"]
+            path: concourse-pipeline/program.sh 
+          outputs:
+            - name: myfile

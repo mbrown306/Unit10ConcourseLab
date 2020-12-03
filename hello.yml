@@ -1,0 +1,10 @@
+---
+resources:
+- name: concourse-pipeline
+  type: git
+  icon: github
+  source:
+    uri: https://github.com/mbrown306/Unit10ConcourseLab
+    branch: project10
+    username: mbrown306
+    password: Tiffany12b

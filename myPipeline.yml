@@ -4,29 +4,40 @@
 resources:
 - name: concourse-pipeline
   type: git
-  icon: github
   source:
     uri: https://github.com/mbrown306/Unit10ConcourseLab
     branch: project10
     username: mbrown306
-    password: 
-
----
+    password: Tiffany12b 
 
 jobs:
 - name: job 
+  public:  
   plan:
   - get: concourse-pipeline
   - task: run-script
     config:
-      platform: linux
       image_resource:
         type: registry-image
-        source: { repository: ngnix }
+        source: { repository: centos }
+        tag: latest
       inputs:
         - name: concourse-pipeline
+      platform: linux
       run:
         path: concourse-pipeline/program.sh 
         args: []
       outputs:
         - name: myfile
+  - task: run-script2
+    config:
+      image_resource:
+        type: registry-image
+        source: { repository: centos }
+        tag: latest
+      inputs:
+        - name: concourse-pipeline
+        - name: myfile 
+      platform: linux
+      run:
+        path: concourse-pipeline/testProgram.sh 
